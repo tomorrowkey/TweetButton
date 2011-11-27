@@ -1,6 +1,6 @@
 {
 	"name": "tweet button",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "To help you tweet the page you are viewing",
 	"browser_action": {
 		"default_icon": "icon19.png",
