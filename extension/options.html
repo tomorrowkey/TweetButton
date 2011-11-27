@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>tweet button option</title>
+		<script type="text/javascript" src="script.js"></script>
+		<script>
+			function load() {
+				var tweet_format = document.getElementById('tweet_format');
+				tweet_format.value = getTweetFormat();
+			}
+
+			function save() {
+				var tweet_format = document.getElementById('tweet_format').value;
+				saveTweetFormat(tweet_format);
+				alert('saved');
+			}
+
+			function restoreDefault() {
+				restoreTweetFormat();
+				load();
+				alert('saved');
+			}
+
+
+			window.onload = load;
+
+		</script>
+	</head>
+	<body>
+		<h1>tweet button option</h1>
+		<hr />
+		<h3>tweet format</h3>
+		<dl>
+			<dt>
+				{title}
+			</dt>
+			<dd>
+				viewing page title
+			</dd>
+			<dt>
+				{url}
+			</dt>
+			<dd>
+				viewing page url
+			</dd>
+		</dl>
+		<input type="text" id="tweet_format" size="100" />
+		<hr />
+		<input type="button" value="save" onclick="save();" />
+		<input type="button" value="reset" onclick="load();" />
+		<input type="button" value="restore default value" onclick="restoreDefault();" />
+	</body>
+</html>
