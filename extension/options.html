@@ -8,16 +8,22 @@
 			function load() {
 				var tweet_format = document.getElementById('tweet_format');
 				tweet_format.value = getTweetFormat();
+				var auto_close = document.getElementById('auto_close');
+				auto_close.checked = getAutoClose();
 			}
 
 			function save() {
 				var tweet_format = document.getElementById('tweet_format').value;
 				saveTweetFormat(tweet_format);
+				var auto_close = document.getElementById('auto_close').checked;
+				saveAutoClose(auto_close);
+
 				alert('saved');
 			}
 
 			function restoreDefault() {
 				restoreTweetFormat();
+				restoreAutoClose();
 				load();
 				alert('saved');
 			}
@@ -46,6 +52,9 @@
 			</dd>
 		</dl>
 		<input type="text" id="tweet_format" size="100" />
+		<h3>window auto close</h3>
+		<input type="checkbox" id="auto_close" />
+		After a tweet automatically close the window
 		<hr />
 		<input type="button" value="save" onclick="save();" />
 		<input type="button" value="reset" onclick="load();" />

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>tweet button</title>
+		<script type="text/javascript" src="script.js"></script>
+		<script>
+			var url;
+			function onRequest(request, sender, sendResponse) {
+				if(!getAutoClose) {
+					return;
+				}
+				url = request.url;
+
+				chrome.windows.getAll({
+					populate : true
+				}, function(windows) {
+					for(var i in windows) {
+						var window = windows[i];
+						for(var j in window.tabs) {
+							var tab = window.tabs[j];
+							console.log(tab.url);
+							if(tab.url == url) { 
+								chrome.tabs.remove(tab.id, function() {
+								});
+								return;
+							}
+						}
+					}
+				});
+				sendResponse({});
+			};
+
+
+			chrome.extension.onRequest.addListener(onRequest);
+
+		</script>
+	</head>
+	<body></body>
+</html>

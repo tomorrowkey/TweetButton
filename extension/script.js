@@ -21,8 +21,20 @@ function getTweetFormat() {
 	return getOption('tweet_format', '{title} {url}');
 }
 
-function restoreTweetFormat(){
+function restoreTweetFormat() {
 	saveTweetFormat('{title} {url}');
+}
+
+function saveAutoClose(isAutoClose) {
+	saveOption('auto_close', isAutoClose);
+}
+
+function getAutoClose() {
+	return JSON.parse(getOption('auto_close', true));
+}
+
+function restoreAutoClose() {
+	saveAutoClose(true);
 }
 
 /**

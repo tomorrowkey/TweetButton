@@ -1,12 +1,19 @@
 {
-	"name": "tweet button",
+	"name": "Tweet Button",
 	"version": "1.0.1",
 	"description": "To help you tweet the page you are viewing",
+	"background_page": "background.html",
 	"browser_action": {
 		"default_icon": "icon19.png",
-		"default_title": "tweet button"	,
+		"default_title": "Tweet Button"	,
 		"default_popup": "popup.html"
 	},
+	"content_scripts": [
+		{
+			"matches": ["https://twitter.com/intent/tweet/complete*"],
+			"js": ["content_script.js"]
+		}
+	],
 	"options_page": "options.html",
 	"permissions": ["tabs", "contextMenus"],
 	"icons": {
