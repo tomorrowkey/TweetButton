@@ -13,6 +13,10 @@ function getOption(key, defaultValue) {
 	}
 }
 
+function isNumeric(str) {
+	return str.match(/^[0-9]+$/i);
+}
+
 function saveTweetFormat(tweet_format) {
 	saveOption('tweet_format', tweet_format);
 }
@@ -35,6 +39,18 @@ function getAutoClose() {
 
 function restoreAutoClose() {
 	saveAutoClose(true);
+}
+
+function saveAutoCloseDelay(delay) {
+	saveOption('auto_close_delay', delay);
+}
+
+function getAutoCloseDelay() {
+	return JSON.parse(getOption('auto_close_delay', 3000));
+}
+
+function restoreAutoCloseDelay() {
+	saveAutoCloseDelay(3 * 1000);
 }
 
 /**

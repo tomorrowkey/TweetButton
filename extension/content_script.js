@@ -5,4 +5,6 @@ function windowClose() {
 	});
 }
 
-setTimeout(windowClose, 3 * 1000);
+chrome.extension.sendRequest({}, function(response) {
+	setTimeout(windowClose, response.auto_close_delay);
+})

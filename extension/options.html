@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>tweet button option</title>
+		<title>Tweet Button option</title>
 		<script type="text/javascript" src="script.js"></script>
 		<script>
 			function load() {
@@ -10,13 +10,23 @@
 				tweet_format.value = getTweetFormat();
 				var auto_close = document.getElementById('auto_close');
 				auto_close.checked = getAutoClose();
+				var auto_close_delay = document.getElementById('auto_close_delay');
+				auto_close_delay.value = getAutoCloseDelay() / 1000;
 			}
 
 			function save() {
 				var tweet_format = document.getElementById('tweet_format').value;
-				saveTweetFormat(tweet_format);
 				var auto_close = document.getElementById('auto_close').checked;
+				var auto_close_delay = document.getElementById('auto_close_delay').value;
+
+				if(!isNumeric(auto_close_delay)) {
+					alert('auto close delay is not numeric');
+					return;
+				}
+
+				saveTweetFormat(tweet_format);
 				saveAutoClose(auto_close);
+				saveAutoCloseDelay(parseInt(auto_close_delay) * 1000);
 
 				alert('saved');
 			}
@@ -24,6 +34,7 @@
 			function restoreDefault() {
 				restoreTweetFormat();
 				restoreAutoClose();
+				restoreAutoCloseDelay();
 				load();
 				alert('saved');
 			}
@@ -34,9 +45,9 @@
 		</script>
 	</head>
 	<body>
-		<h1>tweet button option</h1>
+		<h1>Tweet Button option</h1>
 		<hr />
-		<h3>tweet format</h3>
+		<h3>Tweet format</h3>
 		<dl>
 			<dt>
 				{title}
@@ -52,9 +63,16 @@
 			</dd>
 		</dl>
 		<input type="text" id="tweet_format" size="100" />
-		<h3>window auto close</h3>
-		<input type="checkbox" id="auto_close" />
-		After a tweet automatically close the window
+		<h3>Window auto close</h3>
+		<p>
+			<input type="checkbox" id="auto_close" />
+			After a tweet automatically close the window
+		</p>
+		<p>
+			Auto close delay
+			<input type="text" id="auto_close_delay" />
+			[s]
+		</p>
 		<hr />
 		<input type="button" value="save" onclick="save();" />
 		<input type="button" value="reset" onclick="load();" />

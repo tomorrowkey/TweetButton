@@ -11,7 +11,7 @@
 	"content_scripts": [
 		{
 			"matches": ["https://twitter.com/intent/tweet/complete*"],
-			"js": ["content_script.js"]
+			"js": ["script.js", "content_script.js"]
 		}
 	],
 	"options_page": "options.html",

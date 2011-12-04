@@ -7,11 +7,23 @@
 		<script>
 			var url;
 			function onRequest(request, sender, sendResponse) {
-				if(!getAutoClose) {
-					return;
-				}
-				url = request.url;
+				if( typeof request.url === "undefined") {
+					sendResponse({
+						'auto_close_delay' : getAutoCloseDelay()
+					});
+				} else {
+					if(!getAutoClose()) {
+						return;
+					}
+					url = request.url;
+					performCloseTab();
 
+					sendResponse({});
+				}
+
+			};
+
+			function performCloseTab() {
 				chrome.windows.getAll({
 					populate : true
 				}, function(windows) {
@@ -20,7 +32,7 @@
 						for(var j in window.tabs) {
 							var tab = window.tabs[j];
 							console.log(tab.url);
-							if(tab.url == url) { 
+							if(tab.url == url) {
 								chrome.tabs.remove(tab.id, function() {
 								});
 								return;
@@ -28,8 +40,7 @@
 						}
 					}
 				});
-				sendResponse({});
-			};
+			}
 
 
 			chrome.extension.onRequest.addListener(onRequest);
