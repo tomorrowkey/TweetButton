@@ -1,6 +1,6 @@
 {
 	"name": "Tweet Button",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "To help you tweet the page you are viewing",
 	"background_page": "background.html",
 	"browser_action": {
