@@ -1,7 +1,7 @@
 {
 	"manifest_version":2,
 	"name": "Tweet Button",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"description": "To help you tweet the page you are viewing",
 	"background": "background.html",
 	"browser_action": {
