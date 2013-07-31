@@ -4,18 +4,7 @@
 		<meta charset="UTF-8">
 		<title>tweet button</title>
 		<script type="text/javascript" src="script.js"></script>
-		<script>
-			chrome.tabs.getSelected(null, function(tab) {
-				var tweet_format = getTweetFormat();
-				var args = {
-					'title' : tab.title,
-					'url' : tab.url
-				};
-
-				var url = 'https://twitter.com/intent/tweet?text=' + encodeURI(tweet_format.format(args));
-				window.open(url, 'tweetwindow', 'chrome');
-			});
-		</script>
+		<script type="text/javascript" src="popup.js"></script>
 	</head>
 	<body></body>
 </html>
