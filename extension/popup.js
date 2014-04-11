@@ -5,6 +5,6 @@ chrome.tabs.getSelected(null, function(tab) {
 		'url' : tab.url
 	};
 
-	var url = 'https://twitter.com/intent/tweet?text=' + encodeURI(tweet_format.format(args));
+	var url = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(tweet_format.format(args));
 	window.open(url, '_blank');
 });
